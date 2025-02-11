@@ -16,3 +16,5 @@ background-image  : url("assets/Bradesco.webp.jpg");
 background-size: cover;
 background-position: center;
 }
+
+@import "tailwindcss";
