@@ -4,12 +4,12 @@ import "./Setor.css";
 
 const Setor = () => {
   const navigate = useNavigate();
-  const [nfcData, setNfcData] = useState([]); // Armazena os dados NFC escaneados
+  const [nfcCode, setNfcCode] = useState(""); // Armazena apenas o código mais recente
 
-  // Simula a leitura de um código NFC (ou código de barras)
+  // Simula a leitura de um código NFC
   const handleScan = () => {
-    const newCode = `NFC-${Math.floor(Math.random() * 10000)}`; // Simula um ID aleatório
-    setNfcData([...nfcData, newCode]);
+    const newCode = `NFC-${Math.floor(Math.random() * 10000)}`; // Gera um ID aleatório
+    setNfcCode(newCode); // Substitui o código anterior pelo novo
   };
 
   return (
@@ -24,12 +24,8 @@ const Setor = () => {
 
       <div className="nfc-section">
         <h3>Registro de NFC</h3>
-        <button onClick={handleScan}>📡 Simular Leitura NFC</button>
-        <ul>
-          {nfcData.map((data, index) => (
-            <li key={index}>{data}</li>
-          ))}
-        </ul>
+        <button onClick={handleScan}>📡 Simular </button>
+        {nfcCode && <p>Código NFC Atual: <strong>{nfcCode}</strong></p>}
       </div>
     </div>
   );

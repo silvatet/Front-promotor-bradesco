@@ -6,10 +6,13 @@ import Setor from './Components/Setor/Setor';
 import PasseCartao from './Components/PasseCartao/PasseCartao';
 import ConfirmacaoPontos from './Components/ConfirmacaoPontos/ConfirmacaoPontos';
 
+
+
+
 function App() {
   return (
     <Router>
-      <div className='app'>
+      <div className="app">
         <Routes>
           <Route path="/" element={<Login />} />
           <Route path="/setor" element={<Setor />} />

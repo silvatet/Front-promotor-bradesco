@@ -1,5 +1,6 @@
 .container {
-    width: 500px;
+    width: 100%;
+    max-width: 500px; /* Limita a largura, mas permite flexibilidade */
     background-color: rgba(0, 0, 0, 0.6);
     backdrop-filter: blur(10px);
     border: 2px solid rgba(255, 255, 255, 0.3);
@@ -15,10 +16,11 @@
 }
 
 h2 {
-    font-size: 28px;
+    font-size: 2rem;
     margin-bottom: 15px;
 }
 
+/* Ajuste para alinhamento dos botões */
 .setor-buttons {
     display: flex;
     flex-direction: column;
@@ -28,7 +30,7 @@ h2 {
 
 .setor-buttons button {
     width: 100%;
-    height: 45px;
+    height: 50px;
     background: linear-gradient(135deg, #00c6ff, #0072ff);
     border: none;
     outline: none;
@@ -39,6 +41,12 @@ h2 {
     font-weight: bold;
     color: white;
     transition: all 0.3s ease-in-out;
+    
+    /* Centraliza os textos */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
 }
 
 .setor-buttons button:hover {
@@ -46,6 +54,7 @@ h2 {
     transform: scale(1.05);
 }
 
+/* Estilização da seção NFC */
 .nfc-section {
     margin-top: 20px;
     padding: 15px;
@@ -85,4 +94,29 @@ h2 {
     margin: 5px 0;
     padding: 8px;
     border-radius: 5px;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .container {
+        width: 90%;
+    }
+
+    h2, .nfc-section h3 {
+        font-size: 1.5rem;
+    }
+
+    .setor-buttons button, .nfc-section button {
+        font-size: 16px;    
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+    .container {
+        padding: 40px;
+    }
+
+    h2 {
+        font-size: 2.2rem;
+    }
 }
