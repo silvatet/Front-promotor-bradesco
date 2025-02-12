@@ -17,14 +17,16 @@ const Setor = () => {
       <h2>Escolha um Setor</h2>
 
       <div className="setor-buttons">
-        <button onClick={() => navigate("/passe-cartao")}>🍻 Bar</button>
-        <button onClick={() => navigate("/passe-cartao")}>🔄 Retorno de Máquina</button>
-        <button onClick={() => navigate("/passe-cartao")}>⚙️ Manutenção de Pontos</button>
+        <button onClick={() => navigate("/Bar")}>🍻 Bar</button>
+        <button onClick={() => navigate("/passe-cartao")}>🔄 Return de Machine</button>
+        <button onClick={() => navigate("/manutencaopontos")}>⚙️ Manutenção de Pontos</button>
+
+
       </div>
 
       <div className="nfc-section">
         <h3>Registro de NFC</h3>
-        <button onClick={handleScan}>📡 Simular </button>
+        <button onClick={handleScan}>📡 Simular Leitura NFC</button>
         {nfcCode && <p>Código NFC Atual: <strong>{nfcCode}</strong></p>}
       </div>
     </div>

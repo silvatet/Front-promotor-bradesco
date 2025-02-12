@@ -5,9 +5,8 @@ import Login from './Components/Login/Login';
 import Setor from './Components/Setor/Setor';
 import PasseCartao from './Components/PasseCartao/PasseCartao';
 import ConfirmacaoPontos from './Components/ConfirmacaoPontos/ConfirmacaoPontos';
-
-
-
+import Manutencaopontos from './Pages/Manutencaopontos/Manutencaopontos';
+import Bar from './Pages/Bar/Bar';
 
 function App() {
   return (
@@ -18,6 +17,8 @@ function App() {
           <Route path="/setor" element={<Setor />} />
           <Route path="/passe-cartao" element={<PasseCartao />} />
           <Route path="/confirmacao-pontos" element={<ConfirmacaoPontos />} />
+          <Route path="/Manutencaopontos" element={<Manutencaopontos />} /> {/* Adicionada a nova rota */}
+          <Route path="/bar" element={<Bar />} /> {/* Adicionada a nova rota */}
         </Routes>
       </div>
     </Router>
