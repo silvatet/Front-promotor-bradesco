@@ -1,73 +1,101 @@
+/* 🔹 Estilização principal */
 .container {
     width: 100%;
-    max-width: 400px;
-    background-color: rgba(255, 255, 255, 0.5);
-    backdrop-filter: blur(10px);
-    border: 2px solid rgba(255, 255, 255, 0.3);
-    padding: 40px;
-    border-radius: 10px;
+    max-width: 500px; /* 🔥 Maior para tablets */
+    background-color: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(15px);
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    padding: 50px;
+    border-radius: 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     margin: auto;
     height: 100vh;
-}
-
-.container h1 {
     text-align: center;
-    font-size: 30px;
-    color: rgb(226, 218, 218);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
 
+/* 🔹 Título */
+.container h1 {
+    font-size: 36px; /* 🔥 Maior para melhor leitura */
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+/* 🔹 Campo de entrada */
 .input-field {
-    position: relative;
     width: 100%;
     margin: 20px 0;
     text-align: center;
 }
 
+/* 🔹 Ícone NFC */
 .nfc-icon img {
-    width: 150px;
-    margin: 20px 0;
+    width: 180px; /* 🔥 Aumentado para tablets */
+    margin: 30px 0;
 }
 
+/* 🔹 Botão principal */
 .container button {
     width: 100%;
-    height: 50px;
-    background-color: #007BFF;
+    max-width: 450px;
+    height: 60px;
+    background: linear-gradient(135deg, #00c6ff, #0072ff);
     border: none;
     outline: none;
-    border-radius: 40px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 50px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
     cursor: pointer;
-    font-size: 16px;
-    font-weight: 600;
-    text-shadow: none;
+    font-size: 20px;
+    font-weight: bold;
     color: white;
+    transition: all 0.3s ease-in-out;
 }
 
+/* 🔹 Efeito hover */
 .container button:hover {
-    background-color: #0056b3;
+    background: linear-gradient(135deg, #0072ff, #00c6ff);
+    transform: scale(1.05);
 }
 
+/* 🔹 Responsividade para tablets médios */
 @media (min-width: 768px) and (max-width: 1024px) {
     .container {
-        max-width: 450px;
-        padding: 60px 20px;
+        max-width: 550px; /* 🔥 Maior conforto */
+        padding: 60px;
     }
 
     .container h1 {
-        font-size: 34px;
+        font-size: 38px;
     }
 
     .container button {
-        font-size: 20px;
+        font-size: 22px;
+        height: 70px;
     }
 }
 
+/* 🔹 Ajuste para telas grandes (Tablets 1848x2960 - proporção 10:16) */
 @media (min-width: 1848px) {
     .container {
-        max-width: 600px;
+        max-width: 600px; /* 🔥 Mais espaço em telas grandes */
+        padding: 80px;
+    }
+
+    .container h1 {
+        font-size: 42px;
+    }
+
+    .input-field input {
+        font-size: 24px;
+        height: 70px;
+    }
+
+    .container button {
+        font-size: 24px;
+        height: 80px;
     }
 }

@@ -1,95 +1,133 @@
+/* 🔹 Ajustando o container principal */
 .container {
-    width: 100%;
-    max-width: 400px;
-    background-color: rgba(255, 255, 255, 0.5);
-    backdrop-filter: blur(10px);
-    border: 2px solid rgba(255, 255, 255, 0.3);
-    padding: 40px;
-    border-radius: 10px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin: auto;
     height: 100vh;
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(15px);
+    border-radius: 20px;
+    padding: 60px; /* 🔹 Ajustado para tablets */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+    max-width: 1848px; /* 🔹 Largura para tablets 10:16 */
+    max-height: 2960px; /* 🔹 Altura máxima */
+    width: 95%;
 }
 
-.container h2 {
+/* 🔹 Título */
+.title {
     text-align: center;
-    font-size: 26px;
-    color: black;
+    font-size: 52px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 30px;
 }
 
-.input-field {
-    position: relative;
-    width: 100%;
-    height: 50px;
-    margin: 20px 0;
+/* 🔹 Formulário vertical */
+.vertical-form {
     display: flex;
     flex-direction: column;
     align-items: center;
-}
-
-.input-field input {
     width: 100%;
-    height: 100%;
-    background-color: transparent;
-    outline: none;
-    border: 2px solid white;
-    border-radius: 40px;
-    font-size: 18px;
-    color: black;
-    padding: 20px 45px;
 }
 
-.input-field input::placeholder {
-    color: gray;
+/* 🔹 Texto de leitura */
+.scan-text {
+    font-size: 38px;
+    font-weight: bold;
+    color: #007BFF;
+    margin-bottom: 25px;
 }
 
+/* 🔹 Ícone NFC */
 .nfc-icon img {
-    width: 100px;
-    margin: 20px 0;
+    width: 220px;
+    height: auto;
+    margin: 35px 0;
 }
 
-.container button {
-    width: 100%;
-    height: 50px;
-    background-color: #007BFF;
-    border: none;
-    outline: none;
-    border-radius: 40px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    cursor: pointer;
-    font-size: 16px;
-    font-weight: 600;
+/* 🔹 Botão de voltar */
+.back-button {
+    width: 85%;
+    max-width: 700px;
+    height: 90px;
+    background: linear-gradient(135deg, #007BFF, #0056b3);
     color: white;
+    font-size: 30px;
+    font-weight: bold;
+    border-radius: 20px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+    transition: all 0.3s ease-in-out;
 }
 
+.back-button:hover {
+    background: linear-gradient(135deg, #0056b3, #0043a5);
+    transform: scale(1.07);
+}
+
+/* 🔹 Rodapé */
 .footer-text {
-    font-size: 14px;
-    text-align: center;
-    margin-top: 20px;
-    color: black;
+    margin-top: 50px;
+    font-size: 24px;
+    font-weight: bold;
+    color: #666;
 }
 
-@media (min-width: 768px) and (max-width: 1024px) {
+/* 🔹 Responsividade para tablets menores */
+@media (max-width: 1280px) {
     .container {
-        max-width: 450px;
-        padding: 60px 20px;
+        max-width: 90%;
+        padding: 50px;
     }
 
-    .container h2 {
-        font-size: 30px;
+    .title {
+        font-size: 46px;
     }
 
-    .input-field input, .container button {
-        font-size: 20px;
-        padding: 25px 50px;
+    .scan-text {
+        font-size: 34px;
+    }
+
+    .nfc-icon img {
+        width: 180px;
+    }
+
+    .back-button {
+        font-size: 26px;
+        height: 80px;
+    }
+
+    .footer-text {
+        font-size: 22px;
     }
 }
 
+/* 🔹 Ajuste para tablets extra grandes (1848x2960) */
 @media (min-width: 1848px) {
     .container {
-        max-width: 600px;
+        max-width: 1200px;
+        padding: 70px;
+    }
+
+    .title {
+        font-size: 58px;
+    }
+
+    .scan-text {
+        font-size: 42px;
+    }
+
+    .nfc-icon img {
+        width: 250px;
+    }
+
+    .back-button {
+        font-size: 32px;
+        height: 100px;
+    }
+
+    .footer-text {
+        font-size: 26px;
     }
 }

@@ -1,55 +1,81 @@
+/* 🔹 Ajustando o container principal */
 .container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background-color: #f4f4f4;
-    text-align: center;
-    padding: 20px;
-  }
-  
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+  background-color: #f4f4f4;
+  text-align: center;
+  padding: 40px;
+}
+
+/* 🔹 Estilização do título */
+h2 {
+  font-size: 2.5rem;
+  color: #a98989;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+/* 🔹 Texto descritivo */
+p {
+  font-size: 1.5rem;
+  color: #666;
+  margin-bottom: 30px;
+}
+
+/* 🔹 Botões estilizados */
+button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 18px 25px;
+  font-size: 1.3rem;
+  cursor: pointer;
+  border-radius: 10px;
+  margin: 12px;
+  transition: background 0.3s ease-in-out, transform 0.2s ease-in-out;
+}
+
+button:hover {
+  background-color: #0056b3;
+  transform: scale(1.05);
+}
+
+/* 📌 Responsividade para tablets médios (768px - 1024px) */
+@media (min-width: 768px) and (max-width: 1024px) {
   h2 {
-    font-size: 2rem;
-    color: #a98989;
-    margin-bottom: 10px;
+      font-size: 3rem;
   }
-  
+
   p {
-    font-size: 1.2rem;
-    color: #666;
-    margin-bottom: 20px;
-  }
-  
-  button {
-    background-color: #007bff;
-    color: white;
-    border: none;
-    padding: 15px 20px;
-    font-size: 1rem;
-    cursor: pointer;
-    border-radius: 5px;
-    margin: 10px;
-    transition: background 0.3s ease-in-out;
-  }
-  
-  button:hover {
-    background-color: #0056b3;
-  }
-  
-  /* Responsividade */
-  @media (max-width: 768px) {
-    h2 {
       font-size: 1.8rem;
-    }
-  
-    p {
-      font-size: 1rem;
-    }
-  
-    button {
-      width: 80%;
-      font-size: 1rem;
-    }
   }
-  
+
+  button {
+      font-size: 1.5rem;
+      padding: 20px 30px;
+  }
+}
+
+/* 🔹 Ajuste para telas grandes (Tablets 1848x2960 px) */
+@media (min-width: 1848px) {
+  .container {
+      padding: 80px;
+  }
+
+  h2 {
+      font-size: 3.5rem;
+  }
+
+  p {
+      font-size: 2rem;
+  }
+
+  button {
+      font-size: 2rem;
+      padding: 25px 40px;
+  }
+}
