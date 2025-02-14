@@ -5,12 +5,12 @@ import "./Setor.css";
 
 const Setor = () => {
   const navigate = useNavigate();
-  const [nfcCode, setNfcCode] = useState(""); // Armazena apenas o código mais recente
+  const [nfcCode, setNfcCode] = useState("");
 
   // Simula a leitura de um código NFC
   const handleScan = () => {
-    const newCode = `NFC-${Math.floor(Math.random() * 10000)}`; // Gera um ID aleatório
-    setNfcCode(newCode); // Substitui o código anterior pelo novo
+    const newCode = `NFC-${Math.floor(Math.random() * 10000)}`;
+    setNfcCode(newCode);
   };
 
   return (
@@ -22,17 +22,29 @@ const Setor = () => {
         height: "100vh",
         width: "100vw",
         backgroundColor: "#f4f4f4",
-        padding: 4,
+        overflow: "hidden",
       }}
     >
       <Grid item xs={12} sm={10} md={8} lg={6} xl={5}>
         <Card
+          className="setor-container"
           sx={{
+            maxWidth: 850, /* 🔥 Ajustado para proporção 10:16 */
+            minHeight: "80vh", /* 🔹 Garante altura suficiente para centralização */
+            width: "100%",
+            p: 4,
             borderRadius: 4,
-            boxShadow: 4,
-            padding: 4,
             textAlign: "center",
+            boxShadow: 4,
             backgroundColor: "white",
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            alignItems: "center",
+            position: "absolute",
+            top: "50%",
+            left: "50%",
+            transform: "translate(-50%, -50%)",
           }}
         >
           <CardContent>
@@ -45,7 +57,7 @@ const Setor = () => {
                 variant="contained"
                 color="primary"
                 size="large"
-                sx={{ fontSize: 20 }}
+                sx={{ fontSize: 20, width: "100%", maxWidth: 350 }}
                 onClick={() => navigate("/Bar")}
               >
                 🍻 Bar
@@ -55,7 +67,7 @@ const Setor = () => {
                 variant="contained"
                 color="secondary"
                 size="large"
-                sx={{ fontSize: 20 }}
+                sx={{ fontSize: 20, width: "100%", maxWidth: 350 }}
                 onClick={() => navigate("/passe-cartao")}
               >
                 🔄 Return de Machine
@@ -65,14 +77,14 @@ const Setor = () => {
                 variant="contained"
                 color="success"
                 size="large"
-                sx={{ fontSize: 20 }}
+                sx={{ fontSize: 20, width: "100%", maxWidth: 350 }}
                 onClick={() => navigate("/manutencaopontos")}
               >
                 ⚙️ Manutenção de Pontos
               </Button>
             </Box>
 
-            <Box sx={{ mt: 4 }}>
+            <Box sx={{ mt: 4, textAlign: "center" }}>
               <Typography variant="h5" fontWeight="bold" sx={{ mb: 2 }}>
                 Registro de NFC
               </Typography>
@@ -80,7 +92,7 @@ const Setor = () => {
                 variant="outlined"
                 color="info"
                 size="large"
-                sx={{ fontSize: 18 }}
+                sx={{ fontSize: 18, width: "100%", maxWidth: 350 }}
                 onClick={handleScan}
               >
                 📡 Simular Leitura NFC

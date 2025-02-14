@@ -10,20 +10,19 @@ const Login = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log("teste", username, password);
+    console.log("🔹 Enviando os dados:", username, password);
     alert("Enviando os dados: " + username + " - " + password);
     navigate("/setor");
   };
 
   return (
-    <Grid container justifyContent="center" alignItems="center" sx={{ height: "100vh", backgroundColor: "#f0f0f0" }}>
-      <Grid item xs={12} sm={8} md={6} lg={4} xl={3}>
-        <Card sx={{ p: 4, borderRadius: 4, boxShadow: 3 }}>
+    <Grid container justifyContent="center" alignItems="center" sx={{ height: "100vh", backgroundColor: "#f0f0f0", overflow: "hidden" }}>
+      <Grid item xs={12} sm={10} md={8} lg={6} xl={5}>
+        <Card className="carteirinha-container" sx={{ maxWidth: 600, width: "100%", p: 4, borderRadius: 4, textAlign: "center", overflow: "hidden" }}>
           <CardContent>
-            <Typography variant="h5" fontWeight="bold" textAlign="center" mb={3}>
+            <Typography variant="h5" className="carteirinha-title" sx={{ fontWeight: "bold", mb: 2 }}>
               Login do Promotor
             </Typography>
-
             <form onSubmit={handleSubmit}>
               <TextField
                 fullWidth
@@ -51,7 +50,7 @@ const Login = () => {
                 </Typography>
               </Grid>
 
-              <Button fullWidth type="submit" variant="contained" color="primary" sx={{ mt: 3, p: 2 }}>
+              <Button fullWidth type="submit" variant="contained" color="primary" sx={{ mt: 3, p: 2, fontSize: 18, borderRadius: 3 }}>
                 Entrar
               </Button>
             </form>

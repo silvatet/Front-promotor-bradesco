@@ -1,133 +1,83 @@
-/* 🔹 Ajustando o container principal */
-.container {
+/* 🔹 Ajustando a responsividade para tablets em orientação vertical */
+.manutencao-container {
+    width: 100%;
+    max-width: 900px; /* 🔥 Ajustado para proporção 10:16 */
+    min-height: 85vh; /* 🔹 Mantém centralizado */
+    background-color: rgba(255, 255, 255, 0.95);
+    border-radius: 20px;
+    padding: 60px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    color: black;
     display: flex;
     flex-direction: column;
-    align-items: center;
     justify-content: center;
-    height: 100vh;
-    background: rgba(255, 255, 255, 0.85);
-    backdrop-filter: blur(15px);
-    border-radius: 20px;
-    padding: 60px; /* 🔹 Ajustado para tablets */
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
-    max-width: 1848px; /* 🔹 Largura para tablets 10:16 */
-    max-height: 2960px; /* 🔹 Altura máxima */
-    width: 95%;
+    align-items: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 /* 🔹 Título */
-.title {
-    text-align: center;
-    font-size: 52px;
+.manutencao-title {
+    font-size: 3rem;
     font-weight: bold;
-    color: #333;
-    margin-bottom: 30px;
-}
-
-/* 🔹 Formulário vertical */
-.vertical-form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-}
-
-/* 🔹 Texto de leitura */
-.scan-text {
-    font-size: 38px;
-    font-weight: bold;
-    color: #007BFF;
     margin-bottom: 25px;
+    color: #007BFF;
 }
 
 /* 🔹 Ícone NFC */
-.nfc-icon img {
-    width: 220px;
-    height: auto;
-    margin: 35px 0;
+.nfc-img {
+    width: 150px;
+    margin-bottom: 20px;
 }
 
 /* 🔹 Botão de voltar */
-.back-button {
-    width: 85%;
-    max-width: 700px;
-    height: 90px;
-    background: linear-gradient(135deg, #007BFF, #0056b3);
-    color: white;
-    font-size: 30px;
+.manutencao-button {
+    width: 100%;
+    max-width: 450px;
+    height: 75px;
+    font-size: 24px;
     font-weight: bold;
-    border-radius: 20px;
-    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+    border-radius: 15px;
+    box-shadow: 0 5px 12px rgba(0, 0, 0, 0.25);
+    background-color: #007BFF;
+    color: white;
     transition: all 0.3s ease-in-out;
 }
 
-.back-button:hover {
-    background: linear-gradient(135deg, #0056b3, #0043a5);
-    transform: scale(1.07);
+.manutencao-button:hover {
+    background: #0056b3;
+    transform: scale(1.05);
 }
 
 /* 🔹 Rodapé */
 .footer-text {
     margin-top: 50px;
-    font-size: 24px;
+    font-size: 22px;
     font-weight: bold;
     color: #666;
 }
 
-/* 🔹 Responsividade para tablets menores */
-@media (max-width: 1280px) {
-    .container {
-        max-width: 90%;
-        padding: 50px;
-    }
-
-    .title {
-        font-size: 46px;
-    }
-
-    .scan-text {
-        font-size: 34px;
-    }
-
-    .nfc-icon img {
-        width: 180px;
-    }
-
-    .back-button {
-        font-size: 26px;
-        height: 80px;
-    }
-
-    .footer-text {
-        font-size: 22px;
-    }
-}
-
-/* 🔹 Ajuste para tablets extra grandes (1848x2960) */
+/* 🔹 Ajuste para telas grandes (Tablets 1848x2960) */
 @media (min-width: 1848px) {
-    .container {
-        max-width: 1200px;
-        padding: 70px;
+    .manutencao-container {
+        max-width: 1000px;
+        padding: 80px;
+        min-height: 90vh;
     }
 
-    .title {
-        font-size: 58px;
+    .manutencao-title {
+        font-size: 3.5rem;
     }
 
-    .scan-text {
-        font-size: 42px;
-    }
-
-    .nfc-icon img {
-        width: 250px;
-    }
-
-    .back-button {
-        font-size: 32px;
-        height: 100px;
-    }
-
-    .footer-text {
+    .manutencao-button {
         font-size: 26px;
+        height: 85px;
+    }
+
+    .nfc-img {
+        width: 180px;
     }
 }

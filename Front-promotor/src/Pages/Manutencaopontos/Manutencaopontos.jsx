@@ -19,18 +19,19 @@ const Manutencaopontos = () => {
       }}
     >
       <Grid item xs={12} sm={10} md={8} lg={6} xl={5}>
-        <Box
-          className="container"
-          sx={{
-            maxWidth: 1200,
-            width: "90%",
-            p: 6,
-            borderRadius: 4,
-            textAlign: "center",
-            boxShadow: "0 10px 30px rgba(0, 0, 0, 0.2)",
-          }}
-        >
-          <Typography variant="h3" className="title" sx={{ fontWeight: "bold", mb: 3 }}>
+      <Box
+        className="manutencao-container"
+        sx={{
+          maxWidth: 1000,
+          width: "100%",
+          p: 6,
+          borderRadius: 4,
+          textAlign: "center",
+           boxShadow: "0 10px 30px rgba(0, 0, 0, 0.2)",  
+       }}
+      >
+
+          <Typography variant="h3" className="manutencao-title" sx={{ fontWeight: "bold", mb: 3 }}>
             Manutenção de Pontos
           </Typography>
 
@@ -40,29 +41,19 @@ const Manutencaopontos = () => {
             </Typography>
 
             <Box className="nfc-icon" sx={{ mb: 4 }}>
-              <img src="/nfc-icon.png" alt="NFC" style={{ width: 200 }} />
+              <img src="/nfc-icon.png" alt="NFC" className="nfc-img" />
             </Box>
 
             <Button
               variant="contained"
-              className="back-button"
-              sx={{
-                width: "80%",
-                maxWidth: 600,
-                height: 80,
-                fontSize: 26,
-                backgroundColor: "#007BFF",
-                fontWeight: "bold",
-                borderRadius: 3,
-                "&:hover": { backgroundColor: "#0056b3", transform: "scale(1.05)" },
-              }}
+              className="manutencao-button"
               onClick={() => navigate("/setor")}
             >
               Voltar
             </Button>
           </Box>
 
-          <Typography className="footer-text" sx={{ mt: 4, fontSize: 22, fontWeight: "bold", color: "#666" }}>
+          <Typography className="footer-text">
             HOLDING CLUBE
           </Typography>
         </Box>

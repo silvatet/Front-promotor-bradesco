@@ -6,15 +6,23 @@
   align-items: center;
   height: 100vh;
   width: 100vw;
-  background-color: #f4f4f4;
+  background-color: #f8f9fa;
   text-align: center;
   padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 850px; /* 🔥 Ajustado para proporção 10:16 */
+  min-height: 80vh;
 }
 
 /* 🔹 Estilização do título */
 h2 {
   font-size: 2.5rem;
-  color: #a98989;
+  color: #007BFF;
   font-weight: bold;
   margin-bottom: 15px;
 }
@@ -22,26 +30,46 @@ h2 {
 /* 🔹 Texto descritivo */
 p {
   font-size: 1.5rem;
-  color: #666;
+  color: #555;
   margin-bottom: 30px;
+}
+
+/* 🔹 Container dos botões */
+.buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  width: 100%;
 }
 
 /* 🔹 Botões estilizados */
 button {
-  background-color: #007bff;
+  background-color: #007BFF;
   color: white;
   border: none;
-  padding: 18px 25px;
-  font-size: 1.3rem;
+  padding: 20px 40px;
+  font-size: 1.5rem;
   cursor: pointer;
-  border-radius: 10px;
-  margin: 12px;
+  border-radius: 12px;
   transition: background 0.3s ease-in-out, transform 0.2s ease-in-out;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  max-width: 350px;
+  text-align: center;
 }
 
 button:hover {
   background-color: #0056b3;
   transform: scale(1.05);
+}
+
+/* 🔹 Botão verde específico */
+.buttons .confirm {
+  background-color: #28A745;
+}
+
+.buttons .confirm:hover {
+  background-color: #218838;
 }
 
 /* 📌 Responsividade para tablets médios (768px - 1024px) */
@@ -54,6 +82,11 @@ button:hover {
       font-size: 1.8rem;
   }
 
+  .buttons {
+      flex-direction: column;
+      gap: 15px;
+  }
+
   button {
       font-size: 1.5rem;
       padding: 20px 30px;
@@ -63,7 +96,9 @@ button:hover {
 /* 🔹 Ajuste para telas grandes (Tablets 1848x2960 px) */
 @media (min-width: 1848px) {
   .container {
-      padding: 80px;
+      max-width: 1000px;
+      padding: 70px;
+      min-height: 90vh;
   }
 
   h2 {

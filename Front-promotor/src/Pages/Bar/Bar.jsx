@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { Grid, Card, CardContent, Typography, Button } from "@mui/material";
-import "./Bar.css"; // Arquivo de estilos
+import "./Bar.css"; // Arquivo de estilos atualizado
 
 const Bar = () => {
   const navigate = useNavigate();
@@ -11,11 +11,11 @@ const Bar = () => {
       container 
       justifyContent="center" 
       alignItems="center" 
-      sx={{ height: "100vh", width: "100vw", backgroundColor: "#f4f4f4" }}
+      sx={{ height: "100vh", width: "100vw", backgroundColor: "#f4f4f4", overflow: "hidden" }}
     >
       <Grid item xs={12} sm={10} md={8} lg={6} xl={5}>
-        <Card className="container" sx={{ maxWidth: 650, p: 6, borderRadius: 4, textAlign: "center" }}>
-          <Typography variant="h3" sx={{ fontWeight: "bold", mb: 2 }}>
+        <Card className="bar-container" sx={{ maxWidth: 850, p: 6, borderRadius: 4, textAlign: "center" }}>
+          <Typography variant="h3" className="bar-title" sx={{ fontWeight: "bold", mb: 2 }}>
             BAR
           </Typography>
 
@@ -28,14 +28,14 @@ const Bar = () => {
             </Typography>
 
             <div className="nfc-icon">
-              <img src="/nfc-icon.png" alt="NFC" style={{ width: 120, marginBottom: 20 }} />
+              <img src="/nfc-icon.png" alt="NFC" className="nfc-img" />
             </div>
 
             <Button 
               variant="contained"
               color="primary"
               fullWidth
-              sx={{ height: 60, fontSize: 22, fontWeight: "bold", borderRadius: 3 }}
+              className="bar-button"
               onClick={() => navigate(-1)}
             >
               VOLTAR

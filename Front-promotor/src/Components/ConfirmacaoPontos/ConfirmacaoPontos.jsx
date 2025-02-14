@@ -23,13 +23,22 @@ const ConfirmacaoPontos = () => {
       <Grid item xs={12} sm={10} md={8} lg={6} xl={5}>
         <Card
           sx={{
-            maxWidth: 600,
+            maxWidth: 850, /* 🔥 Ajustado para proporção 10:16 */
+            minHeight: "80vh", /* 🔹 Garante altura suficiente para centralização */
             width: "100%",
             p: 4,
             borderRadius: 4,
             textAlign: "center",
             boxShadow: 3,
             background: "#fff",
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            alignItems: "center",
+            position: "absolute",
+            top: "50%",
+            left: "50%",
+            transform: "translate(-50%, -50%)",
           }}
         >
           <CardContent>
