@@ -1,18 +1,50 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 import { TextField, Button, Checkbox, FormControlLabel, Grid, Card, CardContent, Typography } from "@mui/material";
 import "./Login.css";
 
 const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
   const navigate = useNavigate();
 
-  const handleSubmit = (event) => {
+  const API_URL = "http://18.231.158.211:3335/Organizer/Login";
+
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log("🔹 Enviando os dados:", username, password);
-    alert("Enviando os dados: " + username + " - " + password);
-    navigate("/setor");
+    setError(""); // Limpar erro anterior
+
+    try {
+      console.log("🔹 Enviando dados para API:", username, password);
+
+      // Enviando os dados corretos no corpo da requisição
+      const response = await axios.put(
+        API_URL,
+        { OrganizerName: username, Password: password }, // Dados enviados ao backend
+        { headers: { "Content-Type": "application/json" } }
+      );
+
+      console.log("🔹 Resposta da API:", response.data);
+
+      // Validando se a API retornou um organizador válido
+      if (response.data.Organizers && response.data.Organizers.length > 0) {
+        const usuarioAutenticado = response.data.Organizers.find(org => org.OrganizerName === username);
+
+        if (usuarioAutenticado) {
+          alert(`✅ Login autorizado, ${usuarioAutenticado.OrganizerName}!`);
+          navigate("/setor"); // Redireciona para a tela Setor
+        } else {
+          setError("❌ Usuário ou senha inválidos!");
+        }
+      } else {
+        setError("❌ Nenhum usuário encontrado no banco de dados!");
+      }
+    } catch (error) {
+      console.error("❌ Erro na requisição:", error);
+      setError("Erro ao conectar ao servidor. Verifique a conexão.");
+    }
   };
 
   return (
@@ -23,6 +55,7 @@ const Login = () => {
             <Typography variant="h5" className="carteirinha-title" sx={{ fontWeight: "bold", mb: 2 }}>
               Login do Promotor
             </Typography>
+            {error && <Typography color="error" sx={{ fontSize: 18, fontWeight: "bold", mb: 2 }}>{error}</Typography>}
             <form onSubmit={handleSubmit}>
               <TextField
                 fullWidth
