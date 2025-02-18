@@ -17,33 +17,38 @@ const Login = () => {
     setError(""); // Limpar erro anterior
 
     try {
-      console.log("🔹 Enviando dados para API:", username, password);
+      const loginData = {
+        Login: username.trim(),
+        SecretKey: password.trim(),
+      };
 
-      // Enviando os dados corretos no corpo da requisição
-      const response = await axios.put(
-        API_URL,
-        { OrganizerName: username, Password: password }, // Dados enviados ao backend
-        { headers: { "Content-Type": "application/json" } }
-      );
+      console.log("🔹 Enviando dados para API:", loginData);
+
+      const response = await axios.put(API_URL, loginData, {
+        headers: { "Content-Type": "application/json" },
+      });
 
       console.log("🔹 Resposta da API:", response.data);
 
-      // Validando se a API retornou um organizador válido
-      if (response.data.Organizers && response.data.Organizers.length > 0) {
-        const usuarioAutenticado = response.data.Organizers.find(org => org.OrganizerName === username);
+      // Verifica se há organizadores na resposta e pega o primeiro
+      if (response.status === 200 && response.data.Organizers?.length > 0) {
+        const usuarioAutenticado = response.data.Organizers[0]; // Pega o primeiro usuário
 
-        if (usuarioAutenticado) {
-          alert(`✅ Login autorizado, ${usuarioAutenticado.OrganizerName}!`);
-          navigate("/setor"); // Redireciona para a tela Setor
-        } else {
-          setError("❌ Usuário ou senha inválidos!");
-        }
+        console.log("✅ Usuário autenticado:", usuarioAutenticado);
+
+        alert(`✅ Login autorizado, ${usuarioAutenticado.OrganizerName}!`);
+        navigate("/setor"); // Redireciona para a tela Setor
       } else {
-        setError("❌ Nenhum usuário encontrado no banco de dados!");
+        setError("❌ Usuário ou senha inválidos!");
       }
     } catch (error) {
       console.error("❌ Erro na requisição:", error);
-      setError("Erro ao conectar ao servidor. Verifique a conexão.");
+
+      if (error.response) {
+        setError(`Erro: ${error.response.data?.message || "Falha ao autenticar"}`);
+      } else {
+        setError("Erro ao conectar ao servidor. Verifique a conexão.");
+      }
     }
   };
 
