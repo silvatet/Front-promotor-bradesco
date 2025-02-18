@@ -1,4 +1,4 @@
-/* 🔹 Reset básico para tela cheia */
+    /* 🔹 Reset básico para tela cheia */
 html, body {
     height: 100vh;
     width: 100vw;
@@ -11,8 +11,8 @@ html, body {
     overflow: hidden;
 }
 
-/* 🔹 Ajustando o Card de Login para centralizar corretamente */
-.MuiCard-root {
+/* 🔹 Ajustando o Card do Perfil para centralizar corretamente */
+.perfil-container {
     width: 100%;
     max-width: 850px; /* 🔥 Ajustado para proporção 10:16 */
     height: auto;
@@ -47,7 +47,45 @@ html, body {
     max-width: 450px;
 }
 
-/* 🔹 Links e checkboxes */
+/* 🔹 Estilização da Tabela */
+.tabela-container {
+    width: 100%;
+    max-width: 750px;
+    margin-top: 20px;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.MuiTable-root {
+    width: 100%;
+    text-align: center;
+}
+
+.MuiTableCell-root {
+    font-size: 18px;
+    font-weight: bold;
+    padding: 10px;
+}
+
+/* 🔹 Estilização do saldo */
+.saldo-btn {
+    font-size: 22px;
+    padding: 16px;
+    border-radius: 10px;
+    width: 95%;
+    max-width: 450px;
+    background-color: #007BFF;
+    color: white;
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+.saldo-btn:hover {
+    background-color: #0056b3;
+}
+
+/* 🔹 Links e tipografia */
 .MuiTypography-root {
     cursor: pointer;
     color: #007BFF;
@@ -61,7 +99,7 @@ html, body {
 
 /* 🔹 Responsividade para tablets pequenos (600px - 768px) */
 @media (min-width: 600px) and (max-width: 768px) {
-    .MuiCard-root {
+    .perfil-container {
         max-width: 95%;
         padding: 50px;
         min-height: 85vh;
@@ -70,7 +108,7 @@ html, body {
 
 /* 🔹 Responsividade para tablets médios (768px - 1024px) */
 @media (min-width: 768px) and (max-width: 1024px) {
-    .MuiCard-root {
+    .perfil-container {
         max-width: 750px;
         padding: 55px;
         min-height: 85vh;
@@ -79,7 +117,7 @@ html, body {
 
 /* 🔹 Ajuste para telas grandes (1024px - 1848px) */
 @media (min-width: 1024px) and (max-width: 1848px) {
-    .MuiCard-root {
+    .perfil-container {
         max-width: 900px;
         padding: 60px;
         min-height: 85vh;
@@ -88,9 +126,10 @@ html, body {
 
 /* 🔹 Ajuste para telas extra grandes (1848px+) proporção 10:16 */
 @media (min-width: 1848px) {
-    .MuiCard-root {
+    .perfil-container {
         max-width: 1000px;
         padding: 70px;
         min-height: 90vh;
     }
 }
+
