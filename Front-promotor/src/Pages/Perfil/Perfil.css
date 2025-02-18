@@ -1,0 +1,134 @@
+/* 🔹 Reset básico para tela cheia */
+html, body {
+    height: 100vh;
+    width: 100vw;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f8f9fa;
+    overflow: hidden;
+}
+
+/* 🔹 Ajustando o Card do Perfil para centralizar corretamente */
+.perfil-container {
+    width: 100%;
+    max-width: 850px; /* 🔥 Ajustado para proporção 10:16 */
+    height: auto;
+    min-height: 80vh; /* 🔹 Garante altura suficiente para centralização */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 15px;
+    padding: 60px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+    background: rgba(255, 255, 255, 0.95);
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* 🔹 Inputs e botões */
+.MuiTextField-root {
+    width: 95%;
+    max-width: 600px;
+    margin-bottom: 15px;
+}
+
+.MuiButton-root {
+    font-size: 22px;
+    padding: 16px;
+    border-radius: 10px;
+    width: 95%;
+    max-width: 450px;
+}
+
+/* 🔹 Estilização da Tabela */
+.tabela-container {
+    width: 100%;
+    max-width: 750px;
+    margin-top: 20px;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.MuiTable-root {
+    width: 100%;
+    text-align: center;
+}
+
+.MuiTableCell-root {
+    font-size: 18px;
+    font-weight: bold;
+    padding: 10px;
+}
+
+/* 🔹 Estilização do saldo */
+.saldo-btn {
+    font-size: 22px;
+    padding: 16px;
+    border-radius: 10px;
+    width: 95%;
+    max-width: 450px;
+    background-color: #007BFF;
+    color: white;
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+.saldo-btn:hover {
+    background-color: #0056b3;
+}
+
+/* 🔹 Links e tipografia */
+.MuiTypography-root {
+    cursor: pointer;
+    color: #007BFF;
+    text-decoration: none;
+    margin-bottom: 20px;
+}
+
+.MuiTypography-root:hover {
+    text-decoration: underline;
+}
+
+/* 🔹 Responsividade para tablets pequenos (600px - 768px) */
+@media (min-width: 600px) and (max-width: 768px) {
+    .perfil-container {
+        max-width: 95%;
+        padding: 50px;
+        min-height: 85vh;
+    }
+}
+
+/* 🔹 Responsividade para tablets médios (768px - 1024px) */
+@media (min-width: 768px) and (max-width: 1024px) {
+    .perfil-container {
+        max-width: 750px;
+        padding: 55px;
+        min-height: 85vh;
+    }
+}
+
+/* 🔹 Ajuste para telas grandes (1024px - 1848px) */
+@media (min-width: 1024px) and (max-width: 1848px) {
+    .perfil-container {
+        max-width: 900px;
+        padding: 60px;
+        min-height: 85vh;
+    }
+}
+
+/* 🔹 Ajuste para telas extra grandes (1848px+) proporção 10:16 */
+@media (min-width: 1848px) {
+    .perfil-container {
+        max-width: 1000px;
+        padding: 70px;
+        min-height: 90vh;
+    }
+}
