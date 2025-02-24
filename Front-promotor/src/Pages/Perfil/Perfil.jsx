@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import axios from "axios";
 import "./Perfil.css";
 import { Card, CardContent, Typography, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Button, Grid, TextField } from "@mui/material";
@@ -15,6 +15,13 @@ const Perfil = () => {
   const API_URL = `http://18.231.158.211:3335/Dashboard/GetBalanceByCpf`;
   const API_UPDATE_URL = `http://18.231.158.211:3335/Dashboard/UpdateBalance`;
 
+  const formatarCPF = (cpf) => {
+    if (cpf.length === 11) {
+      return `${cpf.slice(0, 3)}.${cpf.slice(3, 6)}.${cpf.slice(6, 9)}-${cpf.slice(9)}`;
+    }
+    return cpf;
+  };
+
   const buscarCarteira = async () => {
     if (!cpfUsuario) {
       setErroAPI("Insira um CPF válido para buscar o saldo.");
@@ -25,14 +32,17 @@ const Perfil = () => {
       console.log("🔹 Buscando carteira do usuário:", cpfUsuario);
 
       const response = await axios.get(API_URL, {
-        headers: { Cpf: cpfUsuario },
+        headers: { Cpf: formatarCPF(cpfUsuario) },
         timeout: 10000,
       });
 
       console.log("🔹 Resposta da API:", response.data);
 
-      if (!response.data || typeof response.data !== "object") {
-        throw new Error("Resposta inválida da API");
+      if (!response.data || response.data.length === 0) {
+        setErroAPI("Nenhuma transação encontrada para este CPF.");
+        setSaldoAtual(0);
+        setTransacoes([]);
+        return;
       }
 
       const data = response.data;
@@ -49,8 +59,7 @@ const Perfil = () => {
         };
       });
 
-      const totalSaldo = transacoesFormatadas.length > 0 ? transacoesFormatadas[transacoesFormatadas.length - 1].pontosTotal : 0;
-      setSaldoAtual(totalSaldo);
+      setSaldoAtual(totalPontos);
       setTransacoes(transacoesFormatadas);
       setErroAPI("");
     } catch (error) {
@@ -77,7 +86,7 @@ const Perfil = () => {
       console.log(`🔹 Enviando requisição para ${tipo === "add" ? "adicionar" : "remover"} pontos...`);
 
       const response = await axios.post(API_UPDATE_URL, {
-        Cpf: cpfUsuario,
+        Cpf: formatarCPF(cpfUsuario),
         Impact: tipo === "add" ? valor : -valor,
       });
 
@@ -131,65 +140,36 @@ const Perfil = () => {
               </Typography>
             )}
 
-            {!erroAPI && saldoAtual !== 0 && (
-              <>
-                <TableContainer component={Paper} className="tabela-container" sx={{ borderRadius: 2, mt: 3 }}>
-                  <Table>
-                    <TableHead>
-                      <TableRow>
-                        <TableCell sx={{ fontWeight: "bold", fontSize: 18 }}>Origem</TableCell>
-                        <TableCell sx={{ fontWeight: "bold", fontSize: 18 }}>Pontos</TableCell>
-                        <TableCell sx={{ fontWeight: "bold", fontSize: 18 }}>Total</TableCell>
-                        <TableCell sx={{ fontWeight: "bold", fontSize: 18 }}>Horário</TableCell>
+            <TableContainer component={Paper} className="tabela-container" sx={{ borderRadius: 2, mt: 3 }}>
+              <Table>
+                <TableHead>
+                  <TableRow>
+                    <TableCell sx={{ fontWeight: "bold", fontSize: 18 }}>Origem</TableCell>
+                    <TableCell sx={{ fontWeight: "bold", fontSize: 18 }}>Pontos</TableCell>
+                    <TableCell sx={{ fontWeight: "bold", fontSize: 18 }}>Total</TableCell>
+                    <TableCell sx={{ fontWeight: "bold", fontSize: 18 }}>Horário</TableCell>
+                  </TableRow>
+                </TableHead>
+                <TableBody>
+                  {transacoes.length === 0 ? (
+                    <TableRow>
+                      <TableCell colSpan={4} sx={{ textAlign: "center", fontSize: 16 }}>
+                        Nenhuma transação encontrada.
+                      </TableCell>
+                    </TableRow>
+                  ) : (
+                    transacoes.map((transacao, index) => (
+                      <TableRow key={index}>
+                        <TableCell>{transacao.origem}</TableCell>
+                        <TableCell>{transacao.pontos}</TableCell>
+                        <TableCell>{transacao.pontosTotal}</TableCell>
+                        <TableCell>{transacao.horario}</TableCell>
                       </TableRow>
-                    </TableHead>
-                    <TableBody>
-                      {transacoes.map((transacao, index) => (
-                        <TableRow key={index}>
-                          <TableCell sx={{ fontSize: 16 }}>{transacao.origem}</TableCell>
-                          <TableCell sx={{ fontSize: 16, fontWeight: "bold", color: transacao.pontos >= 0 ? "green" : "red" }}>
-                            {transacao.pontos}
-                          </TableCell>
-                          <TableCell sx={{ fontSize: 16, fontWeight: "bold" }}>{transacao.pontosTotal}</TableCell>
-                          <TableCell sx={{ fontSize: 16 }}>{transacao.horario}</TableCell>
-                        </TableRow>
-                      ))}
-                    </TableBody>
-                  </Table>
-                </TableContainer>
-
-                <TextField
-                  fullWidth
-                  label="Alterar Pontos"
-                  variant="outlined"
-                  value={pontosAlteracao}
-                  onChange={(e) => setPontosAlteracao(e.target.value)}
-                  margin="normal"
-                  sx={{ mt: 2 }}
-                />
-
-                <Grid container spacing={2} sx={{ mt: 2 }}>
-                  <Grid item xs={6}>
-                    <Button fullWidth variant="contained" color="success" onClick={() => alterarPontos("add")}>
-                      Adicionar Pontos
-                    </Button>
-                  </Grid>
-                  <Grid item xs={6}>
-                    <Button fullWidth variant="contained" color="error" onClick={() => alterarPontos("remove")}>
-                      Remover Pontos
-                    </Button>
-                  </Grid>
-                </Grid>
-
-                <Button
-                  fullWidth
-                  className="saldo-btn"
-                  sx={{ mt: 3, height: 60, backgroundColor: "#007BFF", fontSize: 20, fontWeight: "bold", borderRadius: 3 }}
-                >
-                  Saldo atual: {saldoAtual}
-                </Button>
-              </>
-            )}
+                    ))
+                  )}
+                </TableBody>
+              </Table>
+            </TableContainer>
 
             <Button fullWidth variant="contained" sx={{ mt: 3, backgroundColor: "#555" }} onClick={() => navigate(-1)}>
               Voltar
